@@ -5,7 +5,7 @@
 
 Simple wrapper for ListWheelScrollView that allows children to respond on gesture (onTap) events
 
-<img src="https://raw.githubusercontent.com/cilestal/clickable_list_wheel_view/master/example/example.gif" align="center" height = "650" alt="Animated">
+<img src="https://raw.githubusercontent.com/cilestal/clickable_list_wheel_view/master/example/example.gif" align = "middle" height = "650" alt="Animated">
 
 # Installation
 In the `dependencies:` section of your `pubspec.yaml`, add the following line:
