@@ -5,13 +5,28 @@ import 'measure_size.dart';
 class ClickableListWheelScrollView extends StatefulWidget {
   static const Duration _defaultAnimationDuration = Duration(milliseconds: 600);
 
+  ///  Required. The [child] which the wrapper will target to
   final ListWheelScrollView child;
+
+  /// Required. Must be the same for list and wrapper
   final ScrollController scrollController;
+
+  /// Optional. ListWheelScrollView height
   final double listHeight;
+
+  /// Required. Height of one child in ListWheelScrollView
   final double itemHeight;
+
+  /// Required. Number of items in ListWheelScrollView
   final int itemCount;
+
+  /// If true the list will scroll on click
   final bool scrollOnTap;
+
+  /// Set a handler for listening to a `tap` event
   final OnItemTapCallback onItemTapCallback;
+
+  /// sets the duration of the scroll  animation
   final Duration animationDuration;
 
   const ClickableListWheelScrollView({
