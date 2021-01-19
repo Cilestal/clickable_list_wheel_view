@@ -1,0 +1,18 @@
+name: clickable_list_wheel_view
+description: ClickableListWheelScrollView
+version: 0.0.1
+author: michaelcilestal@gmail.com
+homepage: https://github.com/Cilestal/clickable_list_wheel_view
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
