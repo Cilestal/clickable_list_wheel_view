@@ -1,6 +1,6 @@
 name: clickable_list_wheel_view
-description: ClickableListWheelScrollView
-version: 0.0.1
+description: Simple wrapper for ListWheelScrollView that allows children to respond on gesture (onTap) events.
+version: 0.0.2
 homepage: https://github.com/Cilestal/clickable_list_wheel_view
 
 environment:

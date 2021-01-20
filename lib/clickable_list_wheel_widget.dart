@@ -45,7 +45,8 @@ class ClickableListWheelScrollView extends StatefulWidget {
   State<StatefulWidget> createState() => _ClickableListWheelScrollViewState();
 }
 
-class _ClickableListWheelScrollViewState extends State<ClickableListWheelScrollView> {
+class _ClickableListWheelScrollViewState
+    extends State<ClickableListWheelScrollView> {
   double _listHeight;
   Offset _tapUpDetails;
 
@@ -115,8 +116,8 @@ class _ClickableListWheelScrollViewState extends State<ClickableListWheelScrollV
     widget.onItemTapCallback?.call(index);
 
     if (widget.scrollOnTap) {
-      await widget.scrollController
-          .animateTo(index * widget.itemHeight, duration: widget.animationDuration, curve: Curves.ease);
+      await widget.scrollController.animateTo(index * widget.itemHeight,
+          duration: widget.animationDuration, curve: Curves.ease);
     }
   }
 
@@ -130,8 +131,11 @@ class _ClickableListWheelScrollViewState extends State<ClickableListWheelScrollV
     widget.onItemTapCallback?.call(index);
 
     if (widget.scrollOnTap) {
-      (widget.scrollController as FixedExtentScrollController)
-          .animateToItem(index, duration: widget.animationDuration, curve: Curves.ease);
+      (widget.scrollController as FixedExtentScrollController).animateToItem(
+        index,
+        duration: widget.animationDuration,
+        curve: Curves.ease,
+      );
     }
   }
 }
