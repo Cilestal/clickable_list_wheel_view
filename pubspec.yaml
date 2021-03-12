@@ -1,10 +1,10 @@
 name: clickable_list_wheel_view
 description: Simple wrapper for ListWheelScrollView that allows children to respond on gesture (onTap) events.
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/Cilestal/clickable_list_wheel_view
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:

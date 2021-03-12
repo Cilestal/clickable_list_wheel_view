@@ -12,7 +12,7 @@ class ClickableListWheelScrollView extends StatefulWidget {
   final ScrollController scrollController;
 
   /// Optional. ListWheelScrollView height
-  final double listHeight;
+  final double? listHeight;
 
   /// Required. Height of one child in ListWheelScrollView
   final double itemHeight;
@@ -24,20 +24,20 @@ class ClickableListWheelScrollView extends StatefulWidget {
   final bool scrollOnTap;
 
   /// Set a handler for listening to a `tap` event
-  final OnItemTapCallback onItemTapCallback;
+  final OnItemTapCallback? onItemTapCallback;
 
   /// sets the duration of the scroll  animation
   final Duration animationDuration;
 
   const ClickableListWheelScrollView({
-    Key key,
-    @required this.scrollController,
+    Key? key,
+    required this.scrollController,
     this.listHeight,
-    @required this.child,
-    @required this.itemHeight,
+    required this.child,
+    required this.itemHeight,
     this.scrollOnTap = true,
     this.onItemTapCallback,
-    @required this.itemCount,
+    required this.itemCount,
     this.animationDuration = _defaultAnimationDuration,
   }) : super(key: key);
 
@@ -47,8 +47,8 @@ class ClickableListWheelScrollView extends StatefulWidget {
 
 class _ClickableListWheelScrollViewState
     extends State<ClickableListWheelScrollView> {
-  double _listHeight;
-  Offset _tapUpDetails;
+  double? _listHeight;
+  Offset? _tapUpDetails;
 
   @override
   void initState() {
@@ -74,17 +74,17 @@ class _ClickableListWheelScrollViewState
     return GestureDetector(
       onTap: _onTap,
       onTapUp: (tapUpDetails) {
-        _tapUpDetails = tapUpDetails?.localPosition;
+        _tapUpDetails = tapUpDetails.localPosition;
       },
       child: widget.child,
     );
   }
 
   double _getClickedOffset() {
-    if (_tapUpDetails == null) {
+    if (_tapUpDetails == null || _listHeight == null) {
       return 0;
     }
-    return _tapUpDetails.dy - (_listHeight / 2.0);
+    return _tapUpDetails!.dy - (_listHeight! / 2.0);
   }
 
   int _getClickedIndex() {
