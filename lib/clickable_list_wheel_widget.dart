@@ -29,6 +29,9 @@ class ClickableListWheelScrollView extends StatefulWidget {
   /// sets the duration of the scroll  animation
   final Duration animationDuration;
 
+  /// use for ListWheelChildLoopingList
+  final bool loop;
+
   const ClickableListWheelScrollView({
     Key? key,
     required this.scrollController,
@@ -38,6 +41,7 @@ class ClickableListWheelScrollView extends StatefulWidget {
     this.scrollOnTap = true,
     this.onItemTapCallback,
     required this.itemCount,
+    this.loop = false,
     this.animationDuration = _defaultAnimationDuration,
   }) : super(key: key);
 
@@ -99,7 +103,11 @@ class _ClickableListWheelScrollViewState
       return -1;
     }
 
-    return newIndex;
+    if (widget.loop) {
+      return newIndex % widget.itemCount;
+    } else {
+      return newIndex;
+    }
   }
 
   Future<void> _onTap() async {
