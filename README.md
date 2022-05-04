@@ -74,6 +74,9 @@ ClickableListWheelScrollView(
 
   /// sets the duration of the scroll  animation
   final Duration animationDuration;
+  
+  /// use with ListWheelChildLoopingListDelegate
+  final bool loop;
 
 ```
 
