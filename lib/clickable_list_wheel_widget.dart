@@ -49,8 +49,7 @@ class ClickableListWheelScrollView extends StatefulWidget {
   State<StatefulWidget> createState() => _ClickableListWheelScrollViewState();
 }
 
-class _ClickableListWheelScrollViewState
-    extends State<ClickableListWheelScrollView> {
+class _ClickableListWheelScrollViewState extends State<ClickableListWheelScrollView> {
   double? _listHeight;
   Offset? _tapUpDetails;
 
@@ -92,20 +91,18 @@ class _ClickableListWheelScrollViewState
   }
 
   int _getClickedIndex() {
-    final currentIndex = (widget.scrollController is FixedExtentScrollController) ?
-                          (widget.scrollController as FixedExtentScrollController).selectedItem :
-                           widget.scrollController.offset ~/ widget.itemHeight;
+    final currentIndex = (widget.scrollController is FixedExtentScrollController)
+        ? (widget.scrollController as FixedExtentScrollController).selectedItem
+        : widget.scrollController.offset ~/ widget.itemHeight;
     final clickOffset = _getClickedOffset();
     final indexOffset = (clickOffset / widget.itemHeight).round();
     final newIndex = currentIndex + indexOffset;
-
-    if (newIndex < 0 || newIndex >= widget.itemCount) {
-      return -1;
-    }
-
     if (widget.loop) {
       return newIndex % widget.itemCount;
     } else {
+      if (newIndex < 0 || newIndex >= widget.itemCount) {
+        return -1;
+      }
       return newIndex;
     }
   }
@@ -126,8 +123,8 @@ class _ClickableListWheelScrollViewState
     widget.onItemTapCallback?.call(index);
 
     if (widget.scrollOnTap) {
-      await widget.scrollController.animateTo(index * widget.itemHeight,
-          duration: widget.animationDuration, curve: Curves.ease);
+      await widget.scrollController
+          .animateTo(index * widget.itemHeight, duration: widget.animationDuration, curve: Curves.ease);
     }
   }
 
@@ -141,6 +138,17 @@ class _ClickableListWheelScrollViewState
     widget.onItemTapCallback?.call(index);
 
     if (widget.scrollOnTap) {
+      if (widget.loop) {
+        final offset = _getClickedOffset();
+        final scrollOffset = widget.scrollController.offset + offset;
+        final index = (scrollOffset / widget.itemHeight).round();
+        (widget.scrollController as FixedExtentScrollController).animateToItem(
+          index,
+          duration: widget.animationDuration,
+          curve: Curves.ease,
+        );
+        return;
+      }
       (widget.scrollController as FixedExtentScrollController).animateToItem(
         index,
         duration: widget.animationDuration,
