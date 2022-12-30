@@ -98,14 +98,12 @@ class _ClickableListWheelScrollViewState
     final clickOffset = _getClickedOffset();
     final indexOffset = (clickOffset / widget.itemHeight).round();
     final newIndex = currentIndex + indexOffset;
-
-    if (newIndex < 0 || newIndex >= widget.itemCount) {
-      return -1;
-    }
-
     if (widget.loop) {
       return newIndex % widget.itemCount;
     } else {
+        if (newIndex < 0 || newIndex >= widget.itemCount) {
+          return -1;
+        }
       return newIndex;
     }
   }
